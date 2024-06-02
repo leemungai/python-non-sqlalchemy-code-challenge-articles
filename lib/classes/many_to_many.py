@@ -94,4 +94,11 @@ class Magazine:
         else None)
 
     def contributing_authors(self):
-        pass
+        return [article.author for article in self.articles()]
+    
+    @classmethod
+    def top_publisher(cls):
+        return (
+            max((mbuku for mbuku in {article.magazine for article in Article.all}), key=lambda magazine: len(magazine.articles()))
+            if Article.all
+            else None)
