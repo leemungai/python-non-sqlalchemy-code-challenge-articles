@@ -36,7 +36,17 @@ class Magazine:
     def __init__(self, name, category):
         self.name = name
         self.category = category
-
+        
+    @property
+    def name(self):
+        return self._name
+    
+    @name.setter
+    def name(self, name):
+        if isinstance(name, str) and 2 <= len(name)  <= 16:
+            self._name = name
+        else:
+            return None
     def articles(self):
         pass
 
